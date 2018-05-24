@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="utf-8">
+  <title>show how beautiful you are | face to face</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/p.ico}" media="screen" />
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="themes/explorer-fa/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="css/jquery-ui.min.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="css/modal-body.css" media="all" rel="stylesheet" type="text/css"/>
+<script src="jquery/jquery-3.3.1.min.js" th:src="@{/jquery/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script src="jquery/jquery-ui.min.js" th:src="@{/jquery/jquery-ui.min.js}" charset="utf-8"></script>
+<script src="js/plugins/sortable.js" type="text/javascript"></script>
+<script src="js/fileinput.min.js"></script>
+<script src="js/locales/zh.js"></script>
+<script src="../themes/explorer-fa/theme.js" type="text/javascript"></script>
+<script src="../themes/fa/theme.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>       
+
+</head>
+<body >
+<div class="container">
+   <div class="jumbotron" style="text-align: center;">
+        <h1>Welcome to you,my friend!</h1>
+        <p>赶紧来上传图片吧  My friend - Show how beautiful you are</p>
+   </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Oh my friend</h4>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal-body" style="text-align: center;">  
+    <a href="" class="form-control" style="border:none;">上传照骗</a>  
+    <input type="file" name="picFile" id="picFile" class="file-loading" />  
+</div>
+ 
+<div id="footer" class="container">
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="navbar-inner navbar-content-center">
+        <p class="text-muted credit" style="padding: 10px;text-align: center;">
+            © 2018  &nbsp;<a href="http://putop.top/">putop.top</a>   &nbsp;fufujun
+        </p>
+    </div>
+</nav>
+</div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+
+//初始化fileinput  
+
+//参数1:控件id、参数2:上传地址  
+init("picFile", "/sendPic");
+
+		    //初始化fileinput控件（第一次初始化）  
+function init(ctrlName, uploadUrl) {  
+	var control = $('#' + ctrlName);  
+		 //初始化上传控件的样式  
+		 control.fileinput({  
+		 language: 'zh',                                         //设置语言  
+		 uploadUrl: uploadUrl,                                   //上传的地址  
+		 allowedFileExtensions: ['jpg', 'png', 'jpeg'],          //接收的文件后缀  
+		 showUpload: true,                                       //是否显示上传按钮  
+		 showCaption: false,                                     //是否显示标题  
+		 browseClass: "btn btn-primary",                         //按钮样式       
+		 dropZoneEnabled: false,                               //是否显示拖拽区域  
+		 //minImageWidth: 50,                                    //图片的最小宽度  
+		 //minImageHeight: 50,                                   //图片的最小高度  
+		 //maxImageWidth: 1000,                                  //图片的最大宽度  
+		 //maxImageHeight: 1000,                                 //图片的最大高度  
+		 maxFileSize: 2048,                                       //单位为kb，如果为0表示不限制文件大小  
+		 //minFileCount: 0,  
+		 //maxFileCount: 10,                                       //表示允许同时上传的最大文件个数  
+		 //enctype: 'multipart/form-data',  
+		 validateInitialCount:true,  
+		 previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",  
+		 //msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",  
+		 uploadExtraData:function (previewId, index) {           //传参  
+		    var data = {  
+		             //此处自定义传参  
+		       		};  
+		         return data;  
+		        }  
+		     });  
+		  
+		  //导入文件上传完成之后的事件  
+		  $("#picFile").on("fileuploaded", function (event, data, previewId, index) {  
+		            var length = data.response.length;
+		            var head = '<h4>兄台，请留一步！吾等美貌与天相争，百年甚难一见！</h4><hr />';
+		            var foot = '<b><i>* 指数值区间均为[0-100],毕竟照骗，数据仅供参考，如有不满，请联系<a href="http://putop.top" target="_blank">我</a>。</i></b>';
+		            var body = '';
+		            if(length && length != 0) {
+		            	if(length == 1) {
+		            		// 一个头像
+		            		var obj = data.response[0];
+		            		var emotion = obj.emotion;
+		            		body = '</h5>↓↓↓兄dei脸部识别参数如下↓↓↓</h5><br /><br />';
+		            		body = body +　'<table><tr><th nowrap="nowrap">性别：</th><td>'+obj.gender+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">年龄：</th><td>'+obj.age+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">种族：</th><td>'+obj.ethnicity+'</td></tr></table><table><tr><th nowrap="nowrap">笑容指数：</th><td>'+obj.smileValue+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">愤怒指数：</th><td>'+emotion["anger"]+'</td><tr><th nowrap="nowrap">厌恶指数：</th><td>'+emotion["disgust"]+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">恐惧指数：</th><td>'+emotion["fear"]+'</td><tr><th nowrap="nowrap">高兴指数：</th><td>'+emotion["happiness"]+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">平静指数：</th><td>'+emotion["neutral"]+'</td></tr><tr><th nowrap="nowrap">伤心指数：</th><td>'+emotion["sadness"]+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">惊讶指数：</th><td>'+emotion["surprise"]+'</td><tr><th nowrap="nowrap">健康指数：</th><td>'+obj.health+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">色斑指数：</th><td>'+obj.stain+'</td></tr><tr><th nowrap="nowrap">青春痘指数：</th><td>'+obj.acne+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">黑眼圈指数：</th><td>'+obj.dark_circle+'</td></tr></table><table><tr><th nowrap="nowrap">男性眼中魅力值：</th><td>'+obj.beauty_male_score+'</td><tr><th nowrap="nowrap">女性眼中魅力值：</th><td>'+obj.beauty_female_score+'</td></tr></table><hr />';
+		            	}else{
+		            		// 多个头像
+		            		body = '</h5>↓↓↓兄dei们脸部识别参数分别如下↓↓↓</h5><br /><br />';
+		            		for ( var i = 0; i <length; i++){
+		            			var obj = data.response[i];
+			            		var emotion = obj.emotion;
+			            		body = body +(i+1)+'.'+'<table><tr><th nowrap="nowrap">性别：</th><td>'+obj.gender+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">年龄：</th><td>'+obj.age+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">种族：</th><td>'+obj.ethnicity+'</td></tr></table><table><tr><th nowrap="nowrap">笑容指数：</th><td>'+obj.smileValue+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">愤怒指数：</th><td>'+emotion["anger"]+'</td><tr><th nowrap="nowrap">厌恶指数：</th><td>'+emotion["disgust"]+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">恐惧指数：</th><td>'+emotion["fear"]+'</td><tr><th nowrap="nowrap">高兴指数：</th><td>'+emotion["happiness"]+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">平静指数：</th><td>'+emotion["neutral"]+'</td></tr><tr><th nowrap="nowrap">伤心指数：</th><td>'+emotion["sadness"]+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">惊讶指数：</th><td>'+emotion["surprise"]+'</td><tr><th nowrap="nowrap">健康指数：</th><td>'+obj.health+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">色斑指数：</th><td>'+obj.stain+'</td></tr><tr><th nowrap="nowrap">青春痘指数：</th><td>'+obj.acne+'</td><td>&ensp;|&ensp;</td><th nowrap="nowrap">黑眼圈指数：</th><td>'+obj.dark_circle+'</td></tr></table><table><tr><th nowrap="nowrap">男性眼中魅力值：</th><td>'+obj.beauty_male_score+'</td><tr><th nowrap="nowrap">女性眼中魅力值：</th><td>'+obj.beauty_female_score+'</td></tr></table><hr />';
+		            		}
+		            	}
+		            	$('#modal-body').html(head + body + foot);
+		            	$('#myModal').modal('show');
+		            }else{
+		            	// 无数据
+		            	$('#modal-body').html(head + '瞎了我的眼，没识别出来啊( ▼-▼ )<hr />' + foot);
+		            	$('#myModal').modal('show');
+		            }
+		        });  
+		    }
+// 使模态框可拖拽		    
+$(document).on("show.bs.modal", ".modal", function(){
+    $(this).draggable();
+    $(this).css("overflow-y", "scroll");   
+    // 防止出现滚动条，出现的话，你会把滚动条一起拖着走的
+});
+	
+/*]]>*/
+</script>
+</html>
