@@ -9,15 +9,15 @@ a simaple page / show how beautiful you are  http://face.putop.top
 
 ## Screenshots
 
-- Index ![Index](https://raw.githubusercontent.com/Folgerjun/materials/master/blog/face/index.png)
+- Index ![](https://raw.githubusercontent.com/Folgerjun/materials/master/blog/face/index.png)
 <br />
-- One Person Result![one](https://raw.githubusercontent.com/Folgerjun/materials/master/blog/face/individual.png)
+- One Person Result![](https://raw.githubusercontent.com/Folgerjun/materials/master/blog/face/individual.png)
 <br />
-- More than One Person Result![more than](https://raw.githubusercontent.com/Folgerjun/materials/master/blog/face/multiplayer.png)
+- More than One Person Result![](https://raw.githubusercontent.com/Folgerjun/materials/master/blog/face/multiplayer.png)
 
 ## More?
  **just click it!** [face.putop.top](http://47.96.88.132:8091/ "face.putop.top")
 
-## Link
+## Links
 - [Face++ API](https://console.faceplusplus.com.cn/documents/4887579 "api")
 - [My long time blog](https://blog.csdn.net/ffj0721/article/details/54322133 "before blog")
