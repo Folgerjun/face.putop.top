@@ -20,4 +20,5 @@ a simaple page / show how beautiful you are  http://face.putop.top
 
 ## Links
 - [Face++ API](https://console.faceplusplus.com.cn/documents/4887579 "api")
-- [My long time blog](https://blog.csdn.net/ffj0721/article/details/54322133 "before blog")
+- [The Old Blog](https://blog.csdn.net/ffj0721/article/details/54322133 "before blog")
+- [The New Blog](http://47.96.88.132/2018/05/24/face-java/)
