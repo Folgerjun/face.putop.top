@@ -10,9 +10,9 @@ a simaple page / show how beautiful you are  http://face.putop.top
 ## Screenshots
 
 - Index ![](https://raw.githubusercontent.com/Folgerjun/materials/master/blog/face/index.png)
-<br />
+
 - One Person Result![](https://raw.githubusercontent.com/Folgerjun/materials/master/blog/face/individual.png)
-<br />
+
 - More than One Person Result![](https://raw.githubusercontent.com/Folgerjun/materials/master/blog/face/multiplayer.png)
 
 ## More?
